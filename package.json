@@ -1,0 +1,20 @@
+{
+  "name": "hello_pupperteer",
+  "version": "1.0.0",
+  "description": "Using pupperteer and google sheet to auto login",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Minh Le",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "google-spreadsheet": "^3.3.0",
+    "puppeteer": "^20.1.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
