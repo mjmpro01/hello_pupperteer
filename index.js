@@ -20,6 +20,7 @@ const main = async () => {
   for (let line of lines) {
    const username = defaultSheet.getCell(line.rowIndex - 2 , 0).value;
    const password = defaultSheet.getCell(line.rowIndex - 2 , 1).value;
+   const resultCell = defaultSheet.getCell(line.rowIndex - 2 , 2);
    console.log(username, password);
    console.log('----------');
 
@@ -35,6 +36,17 @@ const main = async () => {
   // Set screen size
 
   await page.click('input[name="submit');
+
+  await page.waitForNavigation();
+  await page.click('div.navbar-avatar')
+  const greeting = await page.$eval('div.navbar-user-welcome span', element => element.textContent.trim());
+  if (greeting) {
+    console.log(greeting);
+    resultCell.value = 'oke';
+    await defaultSheet.saveUpdatedCells();
+  } else {
+    console.log('The page does not contain a div element with class "navbar-user-welcome"');
+  }
   }
  } catch (e) {
   console.log(e);
