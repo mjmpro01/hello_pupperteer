@@ -16,7 +16,6 @@ const main = async () => {
   const defaultSheet = doc.sheetsByIndex[parseInt(process.env.SHEET_INDEX, 10)];
   await defaultSheet.loadCells();
   const lines = await defaultSheet.getRows();
-  const cellA1 = defaultSheet.getCell(0, 0);
 
   for (let line of lines) {
    const username = defaultSheet.getCell(line.rowIndex - 2 , 0).value;
@@ -24,20 +23,19 @@ const main = async () => {
    console.log(username, password);
    console.log('----------');
 
-  const browser = await puppeteer.launch({executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+  const browser = await puppeteer.launch({headless: false});
 
   const page = await browser.newPage();
 
-  await page.goto('https://developer.chrome.com/');
-
+  await page.goto('https://vuigher.com/');
+ 
+  await page.click('div.navbar-avatar')
+  await page.type('input[name="username"]', username);
+  await page.type('input[name="password"]', password);
   // Set screen size
-  await page.setViewport({width: 1080, height: 1024});
 
-
-  // Set screen size
+  await page.click('input[name="submit');
   }
-
-
  } catch (e) {
   console.log(e);
  }
