@@ -24,7 +24,7 @@ const main = async () => {
    console.log(username, password);
    console.log('----------');
 
-  const browser = await puppeteer.launch({headless: false});
+  const browser = await puppeteer.launch({executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: false});
 
   const page = await browser.newPage();
 
